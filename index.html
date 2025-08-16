@@ -1,32 +1,258 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Моя презентация</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dobrodom — Renovation & Design</title>
+  <meta name="description" content="Dobrodom: renovation of residential and office spaces in Serbia. Quality, speed, transparency.">
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-family: sans-serif;
-      background: #f5f5f5;
+    /* ========= THEME (replace with your Google Slides palette) ========= */
+    :root{
+      --bg: #0f172a;        /* background (e.g., deep navy) */
+      --surface: #111827;   /* cards / sections */
+      --primary: #22c55e;   /* primary accent (e.g., green) */
+      --accent: #60a5fa;    /* secondary accent (e.g., blue) */
+      --text: #e5e7eb;      /* main text */
+      --muted: #9ca3af;     /* muted text */
+      --shadow: rgba(0,0,0,.35);
     }
-    iframe {
-      border: none;
-      width: 100%;
-      height: 100vh;
+    /* ================================================================ */
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Arial,sans-serif;scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;border-radius:12px}
+    .container{max-width:1080px;margin:0 auto;padding:0 20px}
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(17,24,39,.7);border-bottom:1px solid rgba(255,255,255,.06)
     }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700}
+    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--accent));box-shadow:0 6px 18px var(--shadow)}
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{opacity:.9}
+    .menu a:hover{opacity:1}
+    .lang{display:flex;gap:8px}
+    .lang button{
+      background:transparent;border:1px solid rgba(255,255,255,.14);
+      color:var(--text);padding:6px 10px;border-radius:10px;cursor:pointer
+    }
+    .lang button.active{background:var(--primary);border-color:transparent;color:#0b1220}
+    .hero{padding:84px 0 56px;display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+    .hero h1{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:0 0 12px}
+    .lead{font-size:clamp(15px,2.2vw,18px);color:var(--muted);margin:0 0 22px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      background:var(--primary);color:#0b1220;border:none;border-radius:12px;
+      padding:12px 18px;font-weight:700;cursor:pointer;box-shadow:0 10px 24px var(--shadow)
+    }
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.16);color:var(--text)}
+    .card{
+      background:var(--surface);border:1px solid rgba(255,255,255,.06);
+      border-radius:16px;padding:18px;box-shadow:0 10px 24px var(--shadow)
+    }
+    .pill{display:inline-block;background:rgba(255,255,255,.08);padding:6px 10px;border-radius:999px;font-size:12px;margin-bottom:10px}
+    .grid{display:grid;gap:18px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .section{padding:56px 0}
+    .section h2{margin:0 0 18px;font-size:clamp(22px,4vw,32px)}
+    .muted{color:var(--muted)}
+    .footer{padding:26px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,.06);margin-top:32px}
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+    }
+    /* simple anchor offset */
+    .anchor{position:relative;top:-80px;visibility:hidden}
   </style>
 </head>
 <body>
-  <iframe 
-    src="https://docs.google.com/presentation/d/e/2PACX-1vRbqbPFvb9XThhNxvlbvoI7IM_UNaXnHvqzpmqZjA7PoRqkv9vjPGyKOTsbn4x1cCzHT3klHm9BhdjA/pubembed?start=false&loop=false&delayms=3000" 
-    allowfullscreen
-    mozallowfullscreen="true"
-    webkitallowfullscreen="true">
-  </iframe>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>DOBRODOM</span>
+      </div>
+      <div class="menu">
+        <a href="#services" data-i18n="menu.services">Услуги</a>
+        <a href="#process" data-i18n="menu.process">Процесс</a>
+        <a href="#portfolio" data-i18n="menu.portfolio">Портфолио</a>
+        <a href="#contact" data-i18n="menu.contact">Контакты</a>
+        <div class="lang">
+          <button data-lang="ru" class="active">RU</button>
+          <button data-lang="sr">SR</button>
+          <button data-lang="en">EN</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="container hero">
+    <div>
+      <div class="pill" data-i18n="hero.pill">Ремонт и отделка в Сербии</div>
+      <h1 data-i18n="hero.title">Качественный ремонт квартир и офисов под ключ</h1>
+      <p class="lead" data-i18n="hero.lead">Сроки, смета и результат — прозрачны на каждом шаге. Работаем в Белграде и по всей Сербии.</p>
+      <div class="cta">
+        <a class="btn" href="#contact" data-i18n="hero.cta_primary">Получить смету</a>
+        <a class="btn secondary" href="#portfolio" data-i18n="hero.cta_secondary">Посмотреть работы</a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop" alt="Renovation preview">
+    </div>
+  </header>
+
+  <!-- Services -->
+  <div id="services" class="anchor"></div>
+  <section class="section container">
+    <h2 data-i18n="services.title">Что мы делаем</h2>
+    <p class="muted" data-i18n="services.lead">Полный цикл работ от демонтажа до чистовой отделки и мебели.</p>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3 data-i18n="services.item1.title">Квартиры</h3>
+        <p class="muted" data-i18n="services.item1.text">Ремонт, перепланировка, электрика, сантехника, плитка, паркет.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="services.item2.title">Офисы</h3>
+        <p class="muted" data-i18n="services.item2.text">Обновление рабочих пространств без остановки бизнеса.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="services.item3.title">Под ключ</h3>
+        <p class="muted" data-i18n="services.item3.text">Смета, закупки, логистика материалов и авторский надзор.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <div id="process" class="anchor"></div>
+  <section class="section container">
+    <h2 data-i18n="process.title">Как мы работаем</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <ol>
+          <li data-i18n="process.step1"><strong>Встреча и замер.</strong> Понимаем задачи, фиксируем исходные данные.</li>
+          <li data-i18n="process.step2"><strong>Смета и сроки.</strong> Прозрачная смета и календарный план.</li>
+          <li data-i18n="process.step3"><strong>Договор.</strong> Гарантии, поэтапная оплата, ответственное лицо.</li>
+          <li data-i18n="process.step4"><strong>Работы.</strong> Фото/видео-отчёты, контроль качества.</li>
+          <li data-i18n="process.step5"><strong>Сдача объекта.</strong> Чистота, гарантия, послеподдержка.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?q=80&w=1200&auto=format&fit=crop" alt="Work process">
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <div id="portfolio" class="anchor"></div>
+  <section class="section container">
+    <h2 data-i18n="portfolio.title">Недавние проекты</h2>
+    <p class="muted" data-i18n="portfolio.lead">Ещё собираем портфолио — здесь появятся фото до/после и сметы.</p>
+    <div class="grid grid-3">
+      <div class="card"><img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1200&auto=format&fit=crop" alt="Project 1"></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1200&auto=format&fit=crop" alt="Project 2"></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1200&auto=format&fit=crop" alt="Project 3"></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <div id="contact" class="anchor"></div>
+  <section class="section container">
+    <h2 data-i18n="contact.title">Связаться с нами</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <p class="muted" data-i18n="contact.text">Напишите нам в WhatsApp/Telegram или оставьте e-mail — ответим в течение дня.</p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/381628950411">+381 628 895 04 11</a></p>
+        <p><strong>Email:</strong> <a href="mailto:dobrodom.rs@gmail.com">hello@dobrodom.rs</a></p>
+      </div>
+      <div class="card">
+        <form onsubmit="event.preventDefault(); alert(currentDict.form_ok);">
+          <label for="email" data-i18n="form.email_label">Ваш e-mail</label><br/>
+          <input id="email" type="email" placeholder="you@example.com" style="width:100%;padding:12px;margin:8px 0;border-radius:10px;border:1px solid rgba(255,255,255,.16);background:#0b1220;color:var(--text)">
+          <label for="msg" data-i18n="form.msg_label">Сообщение</label><br/>
+          <textarea id="msg" rows="4" placeholder="Кратко опишите задачу" style="width:100%;padding:12px;margin:8px 0;border-radius:10px;border:1px solid rgba(255,255,255,.16);background:#0b1220;color:var(--text)"></textarea>
+          <button class="btn" type="submit" data-i18n="form.submit">Отправить</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Dobrodom. <span class="muted" data-i18n="footer.rights">Все права защищены.</span></div>
+  </footer>
+
+  <script>
+    // ===== Simple i18n (RU / SR / EN) =====
+    const DICTS = {
+      ru: {
+        menu: {services:"Услуги", process:"Процесс", portfolio:"Портфолио", contact:"Контакты"},
+        hero: {pill:"Ремонт и отделка в Сербии", title:"Качественный ремонт квартир и офисов под ключ", lead:"Сроки, смета и результат — прозрачны на каждом шаге. Работаем в Белграде и по всей Сербии.", cta_primary:"Получить смету", cta_secondary:"Посмотреть работы"},
+        services:{title:"Что мы делаем", lead:"Полный цикл работ от демонтажа до чистовой отделки и мебели.",
+          item1:{title:"Квартиры", text:"Ремонт, перепланировка, электрика, сантехника, плитка, паркет."},
+          item2:{title:"Офисы", text:"Обновление рабочих пространств без остановки бизнеса."},
+          item3:{title:"Под ключ", text:"Смета, закупки, логистика материалов и авторский надзор."}
+        },
+        process:{title:"Как мы работаем", step1:"Встреча и замер. Понимаем задачи, фиксируем исходные данные.", step2:"Смета и сроки. Прозрачная смета и календарный план.", step3:"Договор. Гарантии, поэтапная оплата, ответственное лицо.", step4:"Работы. Фото/видео-отчёты, контроль качества.", step5:"Сдача объекта. Чистота, гарантия, послеподдержка."},
+        portfolio:{title:"Недавние проекты", lead:"Ещё собираем портфолио — здесь появятся фото до/после и сметы."},
+        contact:{title:"Связаться с нами", text:"Напишите нам в WhatsApp/Telegram или оставьте e-mail — ответим в течение дня."},
+        form:{email_label:"Ваш e-mail", msg_label:"Сообщение", submit:"Отправить"},
+        footer:{rights:"Все права защищены."},
+        form_ok:"Спасибо! Мы свяжемся с вами."
+      },
+      sr: {
+        menu: {services:"Usluge", process:"Proces", portfolio:"Portfolio", contact:"Kontakt"},
+        hero: {pill:"Renoviranje i završni radovi u Srbiji", title:"Kvalitetna renoviranja stanova i kancelarija", lead:"Rokovi, troškovi i rezultat — transparentni na svakom koraku. Radimo u Beogradu i širom Srbije.", cta_primary:"Zatraži ponudu", cta_secondary:"Pogledaj radove"},
+        services:{title:"Šta radimo", lead:"Pun ciklus radova od demontaže do završne obrade i nameštaja.",
+          item1:{title:"Stanovi", text:"Renoviranje, preuređenje, struja, vodovod, pločice, parket."},
+          item2:{title:"Kancelarije", text:"Obnova radnih prostora bez prekida poslovanja."},
+          item3:{title:"Ključ u ruke", text:"Predračun, nabavke, logistika materijala i autorski nadzor."}
+        },
+        process:{title:"Kako radimo", step1:"Sastanak i merenje. Razumemo zadatak, beležimo polazne podatke.", step2:"Ponuda i rokovi. Transparentan troškovnik i plan.", step3:"Ugovor. Garancije, fazno plaćanje, odgovorna osoba.", step4:"Radovi. Foto/video izveštaji, kontrola kvaliteta.", step5:"Primopredaja. Čistoća, garancija, post-support."},
+        portfolio:{title:"Skorašnji projekti", lead:"Još prikupljamo portfolio — ovde će biti fotografije pre/posle i predračuni."},
+        contact:{title:"Kontaktirajte nas", text:"Pišite nam na WhatsApp/Telegram ili ostavite e-mail — odgovaramo tokom dana."},
+        form:{email_label:"Vaš e-mail", msg_label:"Poruka", submit:"Pošalji"},
+        footer:{rights:"Sva prava zadržana."},
+        form_ok:"Hvala! Javićemo vam se uskoro."
+      },
+      en: {
+        menu: {services:"Services", process:"Process", portfolio:"Portfolio", contact:"Contacts"},
+        hero: {pill:"Renovation and finishing in Serbia", title:"High‑quality apartment & office renovations", lead:"Timeline, budget and results — transparent at every step. We work in Belgrade and across Serbia.", cta_primary:"Get a quote", cta_secondary:"View works"},
+        services:{title:"What we do", lead:"Full cycle from demolition to finishing and furniture.",
+          item1:{title:"Apartments", text:"Remodeling, replanning, electrical, plumbing, tiling, parquet."},
+          item2:{title:"Offices", text:"Refresh workspaces without halting your business."},
+          item3:{title:"Turn‑key", text:"Estimate, procurement, logistics and site supervision."}
+        },
+        process:{title:"How we work", step1:"Meeting & measurements. We align on goals and capture inputs.", step2:"Quote & timeline. Transparent estimate and schedule.", step3:"Contract. Guarantees, staged payments, responsible lead.", step4:"Works. Photo/video reports, quality control.", step5:"Handover. Clean finish, warranty, aftercare."},
+        portfolio:{title:"Recent projects", lead:"Portfolio is in progress — photos before/after and budgets will appear here."},
+        contact:{title:"Get in touch", text:"Write us on WhatsApp/Telegram or leave your e‑mail — we reply within a day."},
+        form:{email_label:"Your e‑mail", msg_label:"Message", submit:"Send"},
+        footer:{rights:"All rights reserved."},
+        form_ok:"Thank you! We'll get back to you."
+      }
+    };
+    let currentLang = 'ru';
+    let currentDict = DICTS[currentLang];
+    const $ = (sel) => Array.from(document.querySelectorAll(sel));
+    function applyDict(lang){
+      currentLang = lang; currentDict = DICTS[lang];
+      $("[data-i18n]").forEach(el=>{
+        const path = el.getAttribute("data-i18n").split(".");
+        let ref = currentDict;
+        for(const p of path){ if(ref && p in ref){ ref = ref[p]; } }
+        if(typeof ref === "string"){ el.textContent = ref; }
+      });
+      $(".lang button").forEach(b=>b.classList.toggle("active", b.dataset.lang===lang));
+      document.documentElement.lang = lang;
+    }
+    $(".lang button").forEach(btn=>btn.addEventListener("click",()=>applyDict(btn.dataset.lang)));
+    document.getElementById("year").textContent = new Date().getFullYear();
+    // initial
+    applyDict('ru');
+  </script>
 </body>
 </html>
